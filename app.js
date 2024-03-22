@@ -25,7 +25,8 @@ app.get('/users/me', userController.me)
 app.patch('/users/update', userController.update)
 
 app.post('/jobs', jobController.create)
-app.get('/jobs', jobController.read)
+app.get('/jobs', jobController.readAll)
+app.get('/jobs/:jobId', jobController.read)
 app.patch('/jobs/:jobId', jobController.update)
 app.delete('/jobs/:jobId', jobController.delete)
 

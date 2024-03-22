@@ -16,6 +16,11 @@ exports.create = catchAsync(async (req, res) => {
 })
 
 exports.read = catchAsync(async (req, res) => {
+	const job = await Job.findById(req.params.jobId).populate('companyId')
+	res.json(job)
+})
+
+exports.readAll = catchAsync(async (req, res) => {
 	let { page, limit, ...filter } = req.query
 	page = ((+page || 1) - 1).toFixed(1)
 	const skip = Math.trunc(+limit * +page) + 0
